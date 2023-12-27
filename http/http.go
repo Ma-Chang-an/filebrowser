@@ -86,6 +86,9 @@ func NewHandler(
 	api.PathPrefix("/command").Handler(monkey(commandsHandler, "/api/command")).Methods("GET")
 	api.PathPrefix("/search").Handler(monkey(searchHandler, "/api/search")).Methods("GET")
 
+	api.PathPrefix("/zip").Handler(monkey(zipHandler, "/api/zip")).Methods("POST")
+	api.PathPrefix("/unzip").Handler(monkey(unzipHandler, "/api/unzip")).Methods("POST")
+
 	public := api.PathPrefix("/public").Subrouter()
 	public.PathPrefix("/dl").Handler(monkey(publicDlHandler, "/api/public/dl/")).Methods("GET")
 	public.PathPrefix("/share").Handler(monkey(publicShareHandler, "/api/public/share/")).Methods("GET")
