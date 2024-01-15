@@ -36,7 +36,8 @@
     "toggleSidebar": "切换侧边栏",
     "update": "更新",
     "upload": "上传",
-    "openFile": "打开文件"
+    "openFile": "打开文件",
+    "uploadToObs": "上传到OBS"
   },
   "download": {
     "downloadFile": "下载文件",

@@ -66,6 +66,13 @@
           :counter="selectedCount"
         />
         <action
+          v-if="headerButtons.create"
+          icon="cloud_upload"
+          :label="$t('buttons.uploadToObs')"
+          @action="uploadToObs"
+          :counter="selectedCount"
+        />
+        <action
           v-if="headerButtons.upload"
           icon="file_upload"
           id="upload-button"
@@ -824,6 +831,23 @@ export default {
           api.download(format, ...files);
         },
       });
+    },
+    uploadToObs() {
+      if (this.selectedCount === 1 && !this.req.items[this.selected[0]].isDir) {
+        api.uploadToObs(null, this.req.items[this.selected[0]].url);
+        return;
+      }
+      let files = [];
+
+      if (this.selectedCount > 0) {
+        for (let i of this.selected) {
+          files.push(this.req.items[i].url);
+        }
+      } else {
+        files.push(this.$route.path);
+      }
+
+      api.uploadToObs(null, ...files);
     },
     switchView: async function () {
       this.$store.commit("closeHovers");

@@ -36,7 +36,8 @@
     "toggleSidebar": "Mostrar/Ocultar menú",
     "update": "Actualizar",
     "upload": "Subir",
-    "openFile": "Abrir archivo"
+    "openFile": "Abrir archivo",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Descargar fichero",

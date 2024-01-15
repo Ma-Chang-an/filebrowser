@@ -78,6 +78,30 @@ export function download(format, ...files) {
   window.open(url);
 }
 
+export async function uploadToObs(...files) {
+  let url = `/api/upload_obs`;
+
+  if (files.length === 1) {
+    url += removePrefix(files[0]) + "?";
+  } else {
+    let arg = "";
+
+    for (let file of files) {
+      arg += removePrefix(file) + ",";
+    }
+
+    arg = arg.substring(0, arg.length - 1);
+    arg = encodeURIComponent(arg);
+    url += `/?files=${arg}&`;
+  }
+
+  let opts = { method: "PUT" };
+
+  const res = await fetchURL(url, opts);
+
+  return res;
+}
+
 export async function post(url, content = "", overwrite = false, onupload) {
   // Use the pre-existing API if:
   const useResourcesApi =
