@@ -79,10 +79,11 @@ func zipDirHandler(w http.ResponseWriter, r *http.Request, d *data, file *files.
 	// TODO: create a zip archive
 
 	for _, fname := range filenames {
-		err = addFile(ar, d, fname, commonDir)
-		if err != nil {
-			log.Printf("Failed to archive %s: %v", fname, err)
-		}
+		log.Printf("Failed to archive %s", fname)
+		// err = addFile(ar, d, fname, commonDir)
+		// if err != nil {
+		// 	log.Printf("Failed to archive %s: %v", fname, err)
+		// }
 	}
 
 	return 0, nil
