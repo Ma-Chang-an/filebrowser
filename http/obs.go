@@ -14,8 +14,6 @@ import (
 var (
 	ak = os.Getenv("AccessKeyID")
 	sk = os.Getenv("SecretAccessKey")
-	// 【可选】如果使用临时AK/SK和SecurityToken访问OBS，同样建议您尽量避免使用硬编码，以降低信息泄露风险。您可以通过环境变量获取访问密钥AK/SK，也可以使用其他外部引入方式传入。
-	securityToken = os.Getenv("SecurityToken")
 	// endpoint填写Bucket对应的Endpoint
 	endPoint   = os.Getenv("EndPoint")
 	bucketName = os.Getenv("BucketName")
@@ -89,9 +87,6 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 		for _, name := range names {
 			fPath := filepath.Join(fname, name)
 			uploadDir2Obs(r, d, fPath)
-			if err != nil {
-				log.Printf("Failed to archive %s: %v", fPath, err)
-			}
 		}
 		return 0, nil
 	}
@@ -116,7 +111,7 @@ func uploadSingalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 func uploadSingalFile2Obs(fname string) (int, error) {
 	// 创建obsClient实例
 	// 如果使用临时AKSK和SecurityToken访问OBS，需要在创建实例时通过obs.WithSecurityToken方法指定securityToken值。
-	obsClient, err := obs.New(ak, sk, endPoint, obs.WithSecurityToken(securityToken))
+	obsClient, err := obs.New(ak, sk, endPoint)
 	if err != nil {
 		log.Printf("Create obsClient error, errMsg: %s", err.Error())
 		return http.StatusInternalServerError, err
