@@ -52,7 +52,6 @@ func uploadDir2ObsHandler(r *http.Request, d *data, file *files.FileInfo) (int, 
 	}
 
 	for _, fname := range filenames {
-		log.Printf("upload %s", fname)
 		uploadDir2Obs(r, d, fname)
 	}
 
@@ -127,17 +126,15 @@ func uploadSignalFile2Obs(root, fname string) (int, error) {
 	// 文件上传
 	output, err := obsClient.PutFile(input)
 	if err == nil {
-		log.Printf("Put file(%s) under the bucket(%s) successful!\n", input.Key, input.Bucket)
-		log.Printf("StorageClass:%s, ETag:%s\n", output.StorageClass, output.ETag)
+		log.Printf("Put file(%s) under the bucket(%s) successful!StorageClass:%s, ETag:%s\n",
+			input.Key, input.Bucket, output.StorageClass, output.ETag)
 		return 0, nil
 	}
 	log.Printf("Put file(%s) under the bucket(%s) fail!\n", input.Key, input.Bucket)
 	if obsError, ok := err.(obs.ObsError); ok {
-		log.Println("An ObsError was found, which means your request sent to OBS was rejected with an error response.")
-		log.Println(obsError.Error())
+		log.Printf("An ObsError was found, which means your request sent to OBS was rejected with an error response. %v\n", obsError.Error())
 	} else {
-		log.Println("An Exception was found, which means the client encountered an internal problem when attempting to communicate with OBS, for example, the client was unable to access the network.")
-		log.Println(err)
+		log.Printf("An Exception was found, which means the client encountered an internal problem when attempting to communicate with OBS, for example, the client was unable to access the network.%v\n", err)
 	}
 	return http.StatusInternalServerError, err
 }
