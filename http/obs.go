@@ -38,7 +38,7 @@ var obsHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) 
 
 	if !file.IsDir {
 		// return rawFileHandler(w, r, file)
-		return uploadSingalFile2ObsHandler(file, d)
+		return uploadSignalFile2ObsHandler(file, d)
 	}
 
 	// return rawDirHandler(w, r, d, file)
@@ -90,10 +90,10 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 		}
 		return 0, nil
 	}
-	return uploadSingalFile2Obs(fname)
+	return uploadSignalFile2Obs(fname)
 }
 
-func uploadSingalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
+func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 	if !d.Check(file.Path) {
 		return http.StatusInternalServerError, fmt.Errorf("not allowed operation")
 	}
@@ -105,10 +105,10 @@ func uploadSingalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 	if !info.IsDir() && !info.Mode().IsRegular() {
 		return 0, nil
 	}
-	return uploadSingalFile2Obs(file.Path)
+	return uploadSignalFile2Obs(info.Name())
 }
 
-func uploadSingalFile2Obs(fname string) (int, error) {
+func uploadSignalFile2Obs(fname string) (int, error) {
 	// 创建obsClient实例
 	// 如果使用临时AKSK和SecurityToken访问OBS，需要在创建实例时通过obs.WithSecurityToken方法指定securityToken值。
 	obsClient, err := obs.New(ak, sk, endPoint)
