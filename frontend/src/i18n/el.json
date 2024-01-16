@@ -37,7 +37,8 @@
         "update": "Ενημέρωση",
         "upload": "Μεταφόρτωση",
         "openFile": "Άνοιγμα αρχείου",
-        "continue": "Συνέχεια"
+        "continue": "Συνέχεια",
+        "uploadToObs": "Upload To OBS"
     },
     "download": {
         "downloadFile": "Λήψη αρχείου",

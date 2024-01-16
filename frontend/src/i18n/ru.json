@@ -36,7 +36,8 @@
     "toggleSidebar": "Боковая панель",
     "update": "Обновить",
     "upload": "Загрузить",
-    "openFile": "Открыть файл"
+    "openFile": "Открыть файл",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Скачать файл",

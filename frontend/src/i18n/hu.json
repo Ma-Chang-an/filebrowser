@@ -36,7 +36,8 @@
     "toggleSidebar": "Oldalsáv átváltása",
     "update": "Frissítés",
     "upload": "Feltöltés",
-    "openFile": "Fájl megnyitása"
+    "openFile": "Fájl megnyitása",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Fájl letöltése",

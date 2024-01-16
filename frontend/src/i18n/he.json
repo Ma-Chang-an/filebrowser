@@ -36,7 +36,8 @@
     "toggleSidebar": "פתיחת / סגירת סרגל צד",
     "update": "עדכון",
     "upload": "העלאה",
-    "openFile": "פתח קובץ"
+    "openFile": "פתח קובץ",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "הורד קובץ",

@@ -32,7 +32,8 @@
     "switchView": "表示を切り替わる",
     "toggleSidebar": "サイドバーを表示する",
     "update": "更新",
-    "upload": "アップロード"
+    "upload": "アップロード",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Download File",

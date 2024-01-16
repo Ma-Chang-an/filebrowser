@@ -32,7 +32,8 @@
     "switchView": "切換顯示方式",
     "toggleSidebar": "切換側邊欄",
     "update": "更新",
-    "upload": "上傳"
+    "upload": "上傳",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "下載檔案",

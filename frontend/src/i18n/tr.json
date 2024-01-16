@@ -34,7 +34,8 @@
     "toggleSidebar": "Menüyü aç/kapat",
     "update": "Güncelle",
     "upload": "Yükle",
-    "openFile": "Dosyayı aç"
+    "openFile": "Dosyayı aç",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Dosyayı indir",

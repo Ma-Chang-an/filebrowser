@@ -66,7 +66,7 @@
           :counter="selectedCount"
         />
         <action
-          v-if="headerButtons.create"
+          v-if="headerButtons.download"
           icon="cloud_upload"
           :label="$t('buttons.uploadToObs')"
           @action="uploadToObs"
@@ -834,7 +834,7 @@ export default {
     },
     uploadToObs() {
       if (this.selectedCount === 1 && !this.req.items[this.selected[0]].isDir) {
-        api.uploadToObs(null, this.req.items[this.selected[0]].url);
+        api.uploadToObs(this.req.items[this.selected[0]].url);
         return;
       }
       let files = [];
@@ -847,7 +847,7 @@ export default {
         files.push(this.$route.path);
       }
 
-      api.uploadToObs(null, ...files);
+      api.uploadToObs(...files);
     },
     switchView: async function () {
       this.$store.commit("closeHovers");

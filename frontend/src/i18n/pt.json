@@ -32,7 +32,8 @@
     "switchView": "Alterar vista",
     "toggleSidebar": "Alternar barra lateral",
     "update": "Atualizar",
-    "upload": "Enviar"
+    "upload": "Enviar",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Descarregar ficheiro",

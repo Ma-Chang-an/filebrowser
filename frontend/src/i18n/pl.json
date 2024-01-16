@@ -32,7 +32,8 @@
     "switchView": "Zmień widok",
     "toggleSidebar": "Pokaż/ukryj panel boczny",
     "update": "Aktualizuj",
-    "upload": "Wgraj"
+    "upload": "Wgraj",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Pobierz plik",

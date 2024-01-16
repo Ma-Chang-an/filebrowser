@@ -37,7 +37,8 @@
     "update": "Update",
     "upload": "Upload",
     "openFile": "Datei öffnen",
-    "continue": "Fortfahren"
+    "continue": "Fortfahren",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Download Datei",

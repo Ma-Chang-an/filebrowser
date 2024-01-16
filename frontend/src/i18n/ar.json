@@ -32,7 +32,8 @@
     "switchView": "تغيير العرض",
     "toggleSidebar": "تبديل الشريط الجانبي",
     "update": "تحديث",
-    "upload": "رفع"
+    "upload": "رفع",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Download File",

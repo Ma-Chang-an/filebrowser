@@ -32,7 +32,8 @@
     "switchView": "Beeld wisselen",
     "toggleSidebar": "Zijbalk tonen",
     "update": "Updaten",
-    "upload": "Uploaden"
+    "upload": "Uploaden",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Bestand downloaden",

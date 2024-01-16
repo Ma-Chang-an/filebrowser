@@ -32,7 +32,8 @@
     "switchView": "Byt vy",
     "toggleSidebar": "Växla sidofält",
     "update": "Uppdatera",
-    "upload": "Ladda upp"
+    "upload": "Ladda upp",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Ladda ner fil",

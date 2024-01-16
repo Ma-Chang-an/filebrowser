@@ -36,7 +36,8 @@
     "toggleSidebar": "Prepnúť sidebar",
     "update": "Aktualizovať",
     "upload": "Nahrať",
-    "openFile": "Otvoriť súbor"
+    "openFile": "Otvoriť súbor",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Stiahnuť súbor",

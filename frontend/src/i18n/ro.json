@@ -32,7 +32,8 @@
     "switchView": "Schimba vizualizarea",
     "toggleSidebar": "Comută bara laterală",
     "update": "Actualizează",
-    "upload": "Încarcă"
+    "upload": "Încarcă",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Descarcă fișier",

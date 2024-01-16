@@ -32,7 +32,8 @@
     "switchView": "Skipta um útlit",
     "toggleSidebar": "Sýna hliðarstiku",
     "update": "Vista",
-    "upload": "Hlaða upp"
+    "upload": "Hlaða upp",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Sækja skjal",

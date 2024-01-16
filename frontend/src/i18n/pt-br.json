@@ -36,7 +36,8 @@
     "toggleSidebar": "Alternar barra lateral",
     "update": "Atualizar",
     "upload": "Enviar",
-    "openFile": "Abrir"
+    "openFile": "Abrir",
+    "uploadToObs": "Upload To OBS"
   },
   "download": {
     "downloadFile": "Baixar arquivo",
