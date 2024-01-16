@@ -110,6 +110,9 @@ func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 func uploadSignalFile2Obs(root, fname string) (int, error) {
 	// 创建obsClient实例
 	// 如果使用临时AKSK和SecurityToken访问OBS，需要在创建实例时通过obs.WithSecurityToken方法指定securityToken值。
+	if ak == "" || sk == "" || endPoint == "" || bucketName == "" {
+		return http.StatusBadRequest, fmt.Errorf("need set environment variable: AccessKeyID, SecretAccessKey, EndPoint, BucketName")
+	}
 	obsClient, err := obs.New(ak, sk, endPoint)
 	if err != nil {
 		log.Printf("Create obsClient error, errMsg: %s", err.Error())
