@@ -90,7 +90,7 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 		}
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(filepath.Join(d.server.Root, fname))
+	return uploadSignalFile2Obs(d.server.Root, fname)
 }
 
 func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
@@ -105,10 +105,10 @@ func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 	if !info.IsDir() && !info.Mode().IsRegular() {
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(filepath.Join(d.server.Root, file.Path))
+	return uploadSignalFile2Obs(d.server.Root, file.Path)
 }
 
-func uploadSignalFile2Obs(fname string) (int, error) {
+func uploadSignalFile2Obs(root, fname string) (int, error) {
 	// 创建obsClient实例
 	// 如果使用临时AKSK和SecurityToken访问OBS，需要在创建实例时通过obs.WithSecurityToken方法指定securityToken值。
 	obsClient, err := obs.New(ak, sk, endPoint)
@@ -121,9 +121,9 @@ func uploadSignalFile2Obs(fname string) (int, error) {
 	// 指定存储桶名称
 	input.Bucket = bucketName
 	// 指定上传对象，此处以 example/objectname 为例。
-	input.Key = fname[1:]
+	input.Key = fname
 	// 指定本地文件，此处以localfile为例
-	input.SourceFile = fname
+	input.SourceFile = filepath.Join(root, fname)
 	// 文件上传
 	output, err := obsClient.PutFile(input)
 	if err == nil {
