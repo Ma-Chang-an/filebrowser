@@ -89,6 +89,8 @@ func NewHandler(
 	api.PathPrefix("/zip").Handler(monkey(zipHandler, "/api/zip")).Methods("POST")
 	api.PathPrefix("/unzip").Handler(monkey(unzipHandler, "/api/unzip")).Methods("POST")
 
+	api.PathPrefix("/upload_obs").Handler(monkey(obsHandler, "/api/upload_obs")).Methods("PUT")
+
 	public := api.PathPrefix("/public").Subrouter()
 	public.PathPrefix("/dl").Handler(monkey(publicDlHandler, "/api/public/dl/")).Methods("GET")
 	public.PathPrefix("/share").Handler(monkey(publicShareHandler, "/api/public/share/")).Methods("GET")
