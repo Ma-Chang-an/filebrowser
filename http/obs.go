@@ -90,7 +90,7 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 		}
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(fname)
+	return uploadSignalFile2Obs(filepath.Join(d.server.Root, fname))
 }
 
 func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
@@ -105,7 +105,7 @@ func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 	if !info.IsDir() && !info.Mode().IsRegular() {
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(info.Name())
+	return uploadSignalFile2Obs(filepath.Join(d.server.Root, file.Path))
 }
 
 func uploadSignalFile2Obs(fname string) (int, error) {
