@@ -121,7 +121,7 @@ func uploadSignalFile2Obs(root, fname string) (int, error) {
 	// 指定存储桶名称
 	input.Bucket = bucketName
 	// 指定上传对象，此处以 example/objectname 为例。
-	input.Key = fname
+	input.Key = fname[1:]
 	// 指定本地文件，此处以localfile为例
 	input.SourceFile = filepath.Join(root, fname)
 	// 文件上传
