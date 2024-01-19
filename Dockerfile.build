@@ -1,20 +1,21 @@
 FROM node:20.9.0-alpine as frontend-build
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN apk --update add git
+
+RUN git clone https://gitee.com/chang-an-BIT/filebrowser.git -b dev_archiver
+WORKDIR /filebrowser/frontend
 
 RUN npm config set registry https://mirrors.huaweicloud.com/repository/npm/
-WORKDIR /code
-COPY ./frontend ./
-
-# RUN cd frontend
 RUN npm ci && npm run build
 
 FROM golang:1.20-alpine as backend-build
 
 RUN go env -w GO111MODULE=on
 RUN go env -w  GOPROXY=https://goproxy.cn,direct
-WORKDIR /code
-COPY ./ ./
-COPY --from=frontend-build /code/dist ./frontend/dist
-RUN go build -ldflags -o .
+COPY --from=frontend-build /filebrowser /filebrowser
+
+WORKDIR /filebrowser
+RUN go build
 
 FROM alpine:latest as filebrowser
 RUN apk --update add ca-certificates \
@@ -22,7 +23,7 @@ RUN apk --update add ca-certificates \
                      curl \
                      jq
 
-COPY --from=backend-build /code/healthcheck.sh /healthcheck.sh
+COPY --from=backend-build /filebrowser/healthcheck.sh /healthcheck.sh
 RUN chmod +x /healthcheck.sh  # Make the script executable
 
 HEALTHCHECK --start-period=2s --interval=5s --timeout=3s \
@@ -31,7 +32,7 @@ HEALTHCHECK --start-period=2s --interval=5s --timeout=3s \
 VOLUME /srv
 EXPOSE 80
 
-COPY --from=backend-build /code/docker_config.json /.filebrowser.json
-COPY --from=backend-build /code/filebrowser /filebrowser
+COPY --from=backend-build /filebrowser/docker_config.json /.filebrowser.json
+COPY --from=backend-build /filebrowser/filebrowser /filebrowser
 
 ENTRYPOINT [ "/filebrowser" ]
