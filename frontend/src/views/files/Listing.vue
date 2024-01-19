@@ -45,6 +45,12 @@
             :label="$t('buttons.delete')"
             show="delete"
           />
+          <action
+            v-if="headerButtons.upload_obs"
+            icon="cloud_upload"
+            :label="$t('buttons.uploadToObs')"
+            show="upload-obs"
+          />
         </template>
 
         <action
@@ -63,13 +69,6 @@
           icon="file_download"
           :label="$t('buttons.download')"
           @action="download"
-          :counter="selectedCount"
-        />
-        <action
-          v-if="headerButtons.download"
-          icon="cloud_upload"
-          :label="$t('buttons.uploadToObs')"
-          @action="uploadToObs"
           :counter="selectedCount"
         />
         <action
@@ -119,6 +118,12 @@
         icon="delete"
         :label="$t('buttons.delete')"
         show="delete"
+      />
+      <action
+        v-if="headerButtons.upload_obs"
+        icon="cloud_upload"
+        :label="$t('buttons.uploadToObs')"
+        show="upload-obs"
       />
     </div>
 
@@ -375,6 +380,7 @@ export default {
     headerButtons() {
       return {
         upload: this.user.perm.create,
+        upload_obs: this.selectedCount > 0 && this.user.perm.rename,
         download: this.user.perm.download,
         shell: this.user.perm.execute && enableExec,
         delete: this.selectedCount > 0 && this.user.perm.delete,
@@ -831,23 +837,6 @@ export default {
           api.download(format, ...files);
         },
       });
-    },
-    uploadToObs() {
-      if (this.selectedCount === 1 && !this.req.items[this.selected[0]].isDir) {
-        api.uploadToObs(this.req.items[this.selected[0]].url);
-        return;
-      }
-      let files = [];
-
-      if (this.selectedCount > 0) {
-        for (let i of this.selected) {
-          files.push(this.req.items[i].url);
-        }
-      } else {
-        files.push(this.$route.path);
-      }
-
-      api.uploadToObs(...files);
     },
     switchView: async function () {
       this.$store.commit("closeHovers");
