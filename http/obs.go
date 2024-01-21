@@ -4,19 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"path/filepath"
 
 	"github.com/filebrowser/filebrowser/v2/files"
 	obs "github.com/huaweicloud/huaweicloud-sdk-go-obs/obs"
-)
-
-var (
-	ak = os.Getenv("AccessKeyID")
-	sk = os.Getenv("SecretAccessKey")
-	// endpoint填写Bucket对应的Endpoint
-	endPoint   = os.Getenv("EndPoint")
-	bucketName = os.Getenv("BucketName")
 )
 
 var obsHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
@@ -89,7 +80,7 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 		}
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(d.server.Root, fname)
+	return uploadSignalFile2Obs(d, fname)
 }
 
 func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
@@ -104,29 +95,24 @@ func uploadSignalFile2ObsHandler(file *files.FileInfo, d *data) (int, error) {
 	if !info.IsDir() && !info.Mode().IsRegular() {
 		return 0, nil
 	}
-	return uploadSignalFile2Obs(d.server.Root, file.Path)
+	return uploadSignalFile2Obs(d, file.Path)
 }
 
-func uploadSignalFile2Obs(root, fname string) (int, error) {
-	// 创建obsClient实例
-	// 如果使用临时AKSK和SecurityToken访问OBS，需要在创建实例时通过obs.WithSecurityToken方法指定securityToken值。
-	if ak == "" || sk == "" || endPoint == "" || bucketName == "" {
+func uploadSignalFile2Obs(d *data, fname string) (int, error) {
+	if d.user.ObsInfo.AccessKeyId == "" || d.user.ObsInfo.SecretAccessKey == "" || d.user.ObsInfo.BucketName == "" || d.user.ObsInfo.EndPoint == "" {
 		return http.StatusBadRequest, fmt.Errorf("need set environment variable: AccessKeyID, SecretAccessKey, EndPoint, BucketName")
 	}
-	obsClient, err := obs.New(ak, sk, endPoint)
+	obsClient, err := obs.New(d.user.ObsInfo.AccessKeyId, d.user.ObsInfo.SecretAccessKey, d.user.ObsInfo.EndPoint)
 	if err != nil {
 		log.Printf("Create obsClient error, errMsg: %s", err.Error())
 		return http.StatusInternalServerError, err
 	}
 	defer obsClient.Close()
 	input := &obs.PutFileInput{}
-	// 指定存储桶名称
-	input.Bucket = bucketName
-	// 指定上传对象，此处以 example/objectname 为例。
+	input.Bucket = d.user.ObsInfo.BucketName
 	input.Key = fname[1:]
-	// 指定本地文件，此处以localfile为例
-	input.SourceFile = filepath.Join(root, fname)
-	// 文件上传
+	input.SourceFile = filepath.Join(d.server.Root, fname)
+
 	output, err := obsClient.PutFile(input)
 	if err == nil {
 		log.Printf("Put file(%s) under the bucket(%s) successful!StorageClass:%s, ETag:%s\n",

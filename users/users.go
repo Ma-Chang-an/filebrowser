@@ -19,6 +19,13 @@ const (
 	MosaicViewMode ViewMode = "mosaic"
 )
 
+type ObsSetting struct {
+	BucketName      string `json:"bucketName"`
+	EndPoint        string `json:"endPoint"`
+	AccessKeyId     string `json:"accessKeyId"`
+	SecretAccessKey string `json:"secretAccessKey"`
+}
+
 // User describes a user.
 type User struct {
 	ID           uint          `storm:"id,increment" json:"id"`
@@ -36,6 +43,7 @@ type User struct {
 	Rules        []rules.Rule  `json:"rules"`
 	HideDotfiles bool          `json:"hideDotfiles"`
 	DateFormat   bool          `json:"dateFormat"`
+	ObsInfo      ObsSetting    `json:"obsInfo"`
 }
 
 // GetRules implements rules.Provider.

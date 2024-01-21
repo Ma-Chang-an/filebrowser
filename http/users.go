@@ -75,6 +75,8 @@ var usersGetHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *
 
 	for _, u := range users {
 		u.Password = ""
+		u.ObsInfo.AccessKeyId = ""
+		u.ObsInfo.SecretAccessKey = ""
 	}
 
 	sort.Slice(users, func(i, j int) bool {
@@ -190,6 +192,20 @@ var userPutHandler = withSelfOrAdmin(func(w http.ResponseWriter, r *http.Request
 				return http.StatusInternalServerError, err
 			}
 		}
+		// if v == "ObsInfo" {
+		// 	if !d.user.Perm.Admin && d.user.LockPassword {
+		// 		return http.StatusForbidden, nil
+		// 	}
+
+		// 	req.Data.ObsInfo.AccessKeyId, err = users.HashPwd(req.Data.ObsInfo.AccessKeyId)
+		// 	if err != nil {
+		// 		return http.StatusInternalServerError, err
+		// 	}
+		// 	req.Data.ObsInfo.SecretAccessKey, err = users.HashPwd(req.Data.ObsInfo.SecretAccessKey)
+		// 	if err != nil {
+		// 		return http.StatusInternalServerError, err
+		// 	}
+		// }
 
 		for _, f := range NonModifiableFieldsForNonAdmin {
 			if !d.user.Perm.Admin && v == f {
