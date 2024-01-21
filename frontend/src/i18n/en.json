@@ -164,12 +164,7 @@
     "uploadMessage": "Select an option to upload.",
     "optionalPassword": "Optional password",
     "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
-    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?",
-    "obsSetting": "OBS Settings",
-    "obsBucketName": "Bucket Name",
-    "endPoint": "EndPoint",
-    "accessKeyId": "Access Key ID(AK)",
-    "secretAccessKey": "Secret Access Key(SK)"
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Images",
@@ -265,7 +260,12 @@
     "userManagement": "User Management",
     "userUpdated": "User updated!",
     "username": "Username",
-    "users": "Users"
+    "users": "Users",
+    "obsSetting": "OBS Settings",
+    "obsBucketName": "Bucket Name",
+    "endPoint": "EndPoint",
+    "accessKeyId": "Access Key ID(AK)",
+    "secretAccessKey": "Secret Access Key(SK)"
   },
   "sidebar": {
     "help": "Help",
