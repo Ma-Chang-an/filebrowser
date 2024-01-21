@@ -45,7 +45,6 @@
         <div class="card-content">
           <input
             :class="passwordClass"
-            type="password"
             :placeholder="$t('settings.newPassword')"
             v-model="password"
             name="password"
@@ -57,6 +56,61 @@
             v-model="passwordConf"
             name="password"
           />
+        </div>
+
+        <div class="card-action">
+          <input
+            class="button button--flat"
+            type="submit"
+            :value="$t('buttons.update')"
+          />
+        </div>
+      </form>
+    </div>
+
+    <div class="column">
+      <form class="card" @submit="updateObsSetting">
+        <div class="card-title">
+          <h2>{{ $t("settings.obsSetting") }}</h2>
+        </div>
+
+        <div class="card-content">
+          <p>
+            <label>{{ $t("settings.obsBucketName") }}</label>
+            <input
+              class="input input--block"
+              type="text"
+              v-model="obsBucketName"
+              id="obsBucketName"
+            />
+          </p>
+          <p>
+            <label>{{ $t("settings.endPoint") }}</label>
+            <input
+              class="input input--block"
+              type="text"
+              v-model="endPoint"
+              id="endPoint"
+            />
+          </p>
+          <p>
+            <label>{{ $t("settings.accessKeyId") }}</label>
+            <input
+              class="input input--block"
+              type="password"
+              v-model="accessKeyId"
+              id="accessKeyId"
+            />
+          </p>
+          <p>
+            <label>{{ $t("settings.secretAccessKey") }}</label>
+            <input
+              class="input input--block"
+              type="password"
+              v-model="secretAccessKey"
+              id="secretAccessKey"
+            />
+          </p>
         </div>
 
         <div class="card-action">
@@ -90,6 +144,10 @@ export default {
       singleClick: false,
       dateFormat: false,
       locale: "",
+      obsBucketName: "",
+      endPoint: "",
+      accessKeyId: "",
+      secretAccessKey: "",
     };
   },
   computed: {
@@ -158,6 +216,35 @@ export default {
           location.reload();
         }
         this.$showSuccess(this.$t("settings.settingsUpdated"));
+      } catch (e) {
+        this.$showError(e);
+      }
+    },
+    async updateObsSetting(event) {
+      event.preventDefault();
+
+      if (
+        this.obsBucketName === "" ||
+        this.endPoint === "" ||
+        this.accessKeyId === "" ||
+        this.secretAccessKey === ""
+      ) {
+        return;
+      }
+
+      try {
+        const data = { 
+          id: this.user.id,
+          obsInfo: {
+            bucketName: this.obsBucketName,
+            endPoint: this.endPoint,
+            accessKeyId: this.accessKeyId,
+            secretAccessKey: this.secretAccessKey,
+          },
+        };
+        await api.update(data, ["ObsInfo"]);
+        this.updateUser(data);
+        this.$showSuccess(this.$t("settings.obsSettingUpdated"));
       } catch (e) {
         this.$showError(e);
       }

@@ -65,7 +65,7 @@ func uploadDir2Obs(r *http.Request, d *data, fname string) (int, error) {
 	}
 	info, err := d.user.Fs.Stat(fname)
 	if err != nil {
-		log.Println("%v", err)
+		log.Printf("%v", err)
 		return http.StatusInternalServerError, err
 	}
 
