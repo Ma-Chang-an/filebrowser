@@ -157,7 +157,9 @@
     "upload": "Upload",
     "uploadFiles": "Upload von {files} Dateien...",
     "uploadMessage": "Wählen Sie eine Upload-Methode",
-    "optionalPassword": "Optionales Passwort"
+    "optionalPassword": "Optionales Passwort",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Bilder",

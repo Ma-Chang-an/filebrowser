@@ -155,7 +155,9 @@
     "size": "Размер",
     "upload": "Загрузить",
     "uploadMessage": "Выберите вариант для загрузки.",
-    "optionalPassword": "Необязательный пароль"
+    "optionalPassword": "Необязательный пароль",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Изображения",

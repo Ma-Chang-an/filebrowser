@@ -156,7 +156,9 @@
     "upload": "Feltöltés",
     "uploadFiles": "{files} fájl feltöltése…",
     "uploadMessage": "Válasszon egy feltöltési módot.",
-    "optionalPassword": "Választható jelszó"
+    "optionalPassword": "Választható jelszó",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Képek",

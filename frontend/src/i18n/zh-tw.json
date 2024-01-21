@@ -147,7 +147,9 @@
     "show": "顯示",
     "size": "大小",
     "upload": "上傳",
-    "uploadMessage": "選擇上傳項。"
+    "uploadMessage": "選擇上傳項。",
+    "uploadToObsMassageMultiple": "你确定要将这 {count} 个文件上传到 OBS 吗？",
+    "uploadToObsMessageSingle": "你确定要将这个文件/文件夹上传到 OBS 吗？"
   },
   "search": {
     "images": "影像",

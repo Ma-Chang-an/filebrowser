@@ -156,7 +156,9 @@
     "upload": "העלאה",
     "uploadFiles": "מעלה {files} קבצים...",
     "uploadMessage": "בחר אפשרות העלאה.",
-    "optionalPassword": "סיסמא אופציונלית"
+    "optionalPassword": "סיסמא אופציונלית",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "תמונות",

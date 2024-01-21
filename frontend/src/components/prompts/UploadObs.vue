@@ -2,10 +2,10 @@
   <div class="card floating">
     <div class="card-content">
       <p v-if="selectedCount === 1">
-        {{ $t("prompts.deleteMessageSingle") }}
+        {{ $t("prompts.uploadToObsMessageSingle") }}
       </p>
       <p v-else>
-        {{ $t("prompts.deleteMessageMultiple", { count: selectedCount }) }}
+        {{ $t("prompts.uploadToObsMassageMultiple", { count: selectedCount }) }}
       </p>
     </div>
     <div class="card-action">

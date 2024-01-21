@@ -25,6 +25,7 @@ import Replace from "./Replace.vue";
 import ReplaceRename from "./ReplaceRename.vue";
 import Share from "./Share.vue";
 import Upload from "./Upload.vue";
+import UploadObs from "./UploadObs.vue";
 import ShareDelete from "./ShareDelete.vue";
 import Sidebar from "../Sidebar.vue";
 import { mapGetters, mapState } from "vuex";
@@ -47,7 +48,8 @@ export default {
     ReplaceRename,
     Upload,
     ShareDelete,
-    Sidebar
+    Sidebar,
+    UploadObs
   },
   data: function () {
     return {

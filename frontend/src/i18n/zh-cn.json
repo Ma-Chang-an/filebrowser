@@ -155,7 +155,9 @@
     "size": "大小",
     "upload": "上传",
     "uploadMessage": "选择上传选项。",
-    "optionalPassword": "密码（选填，不填即无密码）"
+    "optionalPassword": "密码（选填，不填即无密码）",
+    "uploadToObsMassageMultiple": "你确定要将这 {count} 个文件上传到 OBS 吗？",
+    "uploadToObsMessageSingle": "你确定要将这个文件/文件夹上传到 OBS 吗？"
   },
   "search": {
     "images": "图像",

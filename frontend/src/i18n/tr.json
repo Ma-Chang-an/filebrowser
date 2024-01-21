@@ -153,7 +153,9 @@
     "size": "Boyut",
     "upload": "Gönder",
     "uploadMessage": "Yüklemek için bir seçenek belirleyin.",
-    "optionalPassword": "İsteğe bağlı şifre"
+    "optionalPassword": "İsteğe bağlı şifre",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Görseller",

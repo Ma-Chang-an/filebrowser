@@ -156,7 +156,9 @@
     "upload": "Enviar",
     "uploadFiles": "Enviando {files} arquivos...",
     "uploadMessage": "Selecione uma opção para enviar.",
-    "optionalPassword": "Senha opcional"
+    "optionalPassword": "Senha opcional",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Imagens",

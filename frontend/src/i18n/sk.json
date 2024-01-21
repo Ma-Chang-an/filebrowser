@@ -155,7 +155,9 @@
     "size": "Veľkosť",
     "upload": "Nahrať",
     "uploadMessage": "Zvoľte možnosť nahrávania.",
-    "optionalPassword": "Voliteľné heslo"
+    "optionalPassword": "Voliteľné heslo",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Obrázky",

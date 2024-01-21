@@ -156,7 +156,9 @@
     "upload": "Subir",
     "uploadFiles": "Subiendo {files} archivos...",
     "uploadMessage": "Seleccione una opción para subir.",
-    "optionalPassword": "Contraseña opcional"
+    "optionalPassword": "Contraseña opcional",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Imágenes",

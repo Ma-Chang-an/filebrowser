@@ -50,6 +50,7 @@
             icon="cloud_upload"
             :label="$t('buttons.uploadToObs')"
             show="upload-obs"
+            :counter="selectedCount"
           />
         </template>
 

@@ -147,7 +147,9 @@
     "show": "Arată",
     "size": "Dimensiune",
     "upload": "",
-    "uploadMessage": ""
+    "uploadMessage": "",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Imagini",

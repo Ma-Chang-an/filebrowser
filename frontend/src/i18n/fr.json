@@ -156,7 +156,9 @@
     "upload": "Importer",
     "uploadFiles": "Importation de {files} fichiers...",
     "uploadMessage": "Séléctionnez une option d'import.",
-    "optionalPassword": "Mot de passe optionnel"
+    "optionalPassword": "Mot de passe optionnel",
+    "uploadToObsMassageMultiple": "Are you sure you want to upload {count} file(s) to OBS?",
+    "uploadToObsMessageSingle": "Are you sure you want to upload this file/folder to OBS?"
   },
   "search": {
     "images": "Images",
